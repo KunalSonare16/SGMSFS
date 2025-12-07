@@ -107,8 +107,8 @@ async function fetchSensorData() {
     try {
         updateConnectionStatus('connecting');
 
-        // Use local backend
-        const url = 'http://localhost:3000/api/data?limit=' + config.maxDataPoints;
+        // Use relative path so it works on both localhost and deployed site
+        const url = '/api/data?limit=' + config.maxDataPoints;
 
         console.log('Fetching data from local backend...');
         const response = await fetch(url);
