@@ -28,6 +28,26 @@ db.connect(err => {
         return;
     }
     console.log('Connected to database.');
+
+    // Auto-create table if it doesn't exist
+    const createTableQuery = `
+        CREATE TABLE IF NOT EXISTS sensor_readings (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            temperature FLOAT,
+            humidity FLOAT,
+            soil_moisture FLOAT,
+            light_intensity FLOAT,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    `;
+
+    db.query(createTableQuery, (err) => {
+        if (err) {
+            console.error('Error ensuring table exists:', err);
+        } else {
+            console.log('Table "sensor_readings" is ready.');
+        }
+    });
 });
 
 // API Endpoints
