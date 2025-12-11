@@ -67,11 +67,21 @@ function updateSensorData(data) {
     document.getElementById('heroSoil').textContent = soil.toFixed(1) + '%';
     updateProgress('soilProgress', soil, 0, 100);
 
-    // Light Intensity
+    // Light Intensity / Grow Light Status
     const light = parseFloat(data.light_intensity) || 0;
-    document.getElementById('lightValue').textContent = light.toFixed(1);
-    document.getElementById('heroLight').textContent = light.toFixed(1) + '%';
-    updateProgress('lightProgress', light, 0, 100);
+    const isLightOn = light < 20;
+    const statusText = isLightOn ? 'ON' : 'OFF';
+
+    const lightValueElem = document.getElementById('lightValue');
+    if (lightValueElem) {
+        lightValueElem.textContent = statusText;
+        lightValueElem.style.color = isLightOn ? '#fbbf24' : '#9ca3af'; // Amber for ON, Gray for OFF
+    }
+
+    const heroLightElem = document.getElementById('heroLight');
+    if (heroLightElem) {
+        heroLightElem.textContent = statusText;
+    }
 
     // Update timestamp
     const lastUpdate = new Date(data.created_at);
