@@ -16,38 +16,6 @@ A modern, IoT-based web dashboard for real-time monitoring of greenhouse environ
 - **AI Predictions**: Forecast future sensor values based on historical data
 - **Statistics**: Average values calculation and display
 
-## 🚀 Quick Start
-
-### 1. Backend Setup (Node.js & MySQL)
-
-1.  **Install Node.js**: Download and install from [nodejs.org](https://nodejs.org/).
-2.  **Install MySQL**: Download and install MySQL Server.
-3.  **Create Database**:
-    Run the SQL commands in `schema.sql` to create the database and table.
-    ```sql
-    CREATE DATABASE stockvision;
-    USE stockvision;
-    CREATE TABLE sensor_readings (...);
-    ```
-4.  **Configure Environment**:
-    Update `.env` file with your MySQL credentials.
-    ```
-    DB_HOST=localhost
-    DB_USER=root
-    DB_PASSWORD=your_password
-    DB_NAME=stockvision
-    PORT=3000
-    ```
-5.  **Install Dependencies**:
-    ```bash
-    npm install
-    ```
-6.  **Start Server**:
-    ```bash
-    npm start
-    ```
-    The server will run on `http://localhost:3000`.
-
 
 ## 📊 Dashboard Components
 
